@@ -50,6 +50,8 @@ public class AccountController {
             bindingResult.rejectValue("username", "username", "Username already exists, please login.");
         } else if(!emailExists(user.getEmail())){
             bindingResult.rejectValue("email", "email", "Email address already exists, please login.");
+        } else if (!user.getEmail().contains("ox.ac.uk")) {
+            bindingResult.rejectValue("email", "email", "Only Oxford University emails are allowed to register.");
         }
 
         if (bindingResult.hasErrors()) {

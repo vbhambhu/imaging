@@ -15,18 +15,10 @@
         <div class="col-md-4 col-md-auto">
 
 
-            <h3>Entry media</h3>
-            <div th:if="${errMsg}" class="alert alert-danger" th:text="${errMsg}"></div>
-            <form th:action="@{/entry/edit/media(id=${param.id})}" method="POST" enctype="multipart/form-data">
+            <h3>Are you sure you want to delete?</h3>
 
-                <div class="form-group">
-                    <label>Upload new image or video file</label>
-                    <input type="file" class="form-control-file" name="file">
-                </div>
-
-                <button type="submit" class="btn btn-success">Save</button>
-
-
+            <form th:action="@{/entry/delete(id=${param.id})}" method="POST">
+                <button type="submit" class="btn btn-success">Continue and delete</button>
             </form>
 
 

@@ -17,4 +17,7 @@ public interface EntryRepository extends CrudRepository<Entry, Integer> {
 
     List<Entry> findAllByStatus(int status);
 
+
+    Entry findByIdAndUsername(int id, String username);
+
 }

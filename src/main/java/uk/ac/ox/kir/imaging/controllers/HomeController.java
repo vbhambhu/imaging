@@ -2,6 +2,7 @@ package uk.ac.ox.kir.imaging.controllers;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,9 @@ public class HomeController {
     @Autowired
     CategoryRepository categoryRepository;
 
+    @Value("${upload.path}")
+    private String uploadPath;
+
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String showHome(Model model) {
@@ -38,6 +42,8 @@ public class HomeController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         System.out.println(authentication.getAuthorities().toString());
+
+        model.addAttribute("uploadPath", uploadPath);
         model.addAttribute("entries", entryRepository.findAllByUsername(principal.getName()));
         return "dashboard";
     }
