@@ -7,6 +7,9 @@
     <title th:text="${metaTitle} ? ${metaTitle} : 'KIR Competetion' "></title>
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
     <link rel="stylesheet" href="/css/frontend.css"/>
+    <link href="http://vjs.zencdn.net/6.2.7/video-js.css" rel="stylesheet">
+
+
 </head>
 <body>
 
@@ -29,7 +32,29 @@
 
 <div th:each="entry:${entries}">
 
-    <img th:src="@{/images/}+${entry.mediaPath}" />
+    <div th:switch="${entry.type}">
+        <p th:case="'image'">
+            <img th:src="@{'images/' + ${entry.mediaPath}}"/>
+        </p>
+        <p th:case="video">
+            video here
+
+            <video controls preload="auto" width="640" height="264"
+                  data-setup="{}">
+                <source th:src="@{'images/' + ${entry.mediaPath}}" type='video/mp4'>
+        </video>
+
+
+
+
+
+
+
+
+        </p>
+    </div>
+
+
 
     <div th:text="${entry.title}"></div>
     <a th:href="@{/entry/edit/media(id=${entry.id})}">Edit media</a>
@@ -51,6 +76,9 @@
 
 
 </div>
+
+
+<!-- If you'd like to support IE8 -->
 
 </body>
 </html>
