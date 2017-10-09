@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head th:fragment="head">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta content="ie=edge" http-equiv="x-ua-compatible" />
+    <title th:text="${metaTitle} ? ${metaTitle} : 'KIR Competetion' "></title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" href="/css/frontend.css"/>
+</head>
+<body>
+
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-md-4 col-md-auto">
+
+
+            <h3>Entry media</h3>
+
+            <form th:action="@{/entry/edit/media(id=${param.id})}" method="POST">
+
+                <div class="form-group">
+                    <label>Upload new image or video file</label>
+                    <input type="file" class="form-control-file" name="file">
+                </div>
+
+                <button type="submit" class="btn btn-success">Save</button>
+
+
+            </form>
+
+
+
+
+
+
+
+
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

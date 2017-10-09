@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head th:fragment="head">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta content="ie=edge" http-equiv="x-ua-compatible" />
+    <title th:text="${metaTitle} ? ${metaTitle} : 'KIR Competetion' "></title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" href="/css/frontend.css"/>
+</head>
+<body>
+
+<div class="container">
+
+   <a href="/logout">logout</a>
+
+    <span sec:authentication="principal.authorities">[ROLE_USER, ROLE_ADMIN]</span>
+
+
+    <div sec:authorize="hasAuthority('ADMIN')">
+        This content is only shown to administrators.
+    </div>
+    <div sec:authorize="hasAuthority('USER')">
+        This content is only shown to users.
+    </div>
+
+    <h3>My entries</h3>
+
+
+<div th:each="entry:${entries}">
+    <div th:text="${entry.title}"></div>
+    <a th:href="@{/entry/edit/media(id=${entry.id})}">Edit media</a>
+    <a th:href="@{/entry/edit/details(id=${entry.id})}">Edit details</a>
+    <a th:href="@{/entry/edit/details(id=${entry.id})}">Delete</a>
+</div>
+
+    <div th:if="${#lists.size(entries)} < 4">
+        <a href="/add/entry">Create new entry</a>
+    </div>
+
+
+
+</div>
+
+</body>
+</html>

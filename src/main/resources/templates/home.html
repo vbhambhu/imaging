@@ -1,0 +1,12 @@
+This is home page
+
+<a href="dashboard">Submit</a>
+
+<div th:each="category:${categories}">
+    <div th:text="${category.name}"></div>
+    <div th:text="${category.content}"></div>
+</div>
+
+<div th:each="entry:${entries}">
+    <div th:text="${entry.title}"></div>
+</div>

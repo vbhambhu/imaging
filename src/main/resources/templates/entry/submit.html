@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head th:fragment="head">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta content="ie=edge" http-equiv="x-ua-compatible" />
+    <title th:text="${metaTitle} ? ${metaTitle} : 'KIR Competetion' "></title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" href="/css/frontend.css"/>
+</head>
+<body>
+
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-md-4 col-md-auto">
+
+
+
+
+            <h3>Add your entry</h3>
+
+            <form th:action="@{/add/entry}" name="loginForm" th:object="${entry}"  method="POST" id="needs-validation">
+
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Category</label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" class="form-control" th:classappend="${#fields.hasErrors('title')} ? is-invalid" th:field="${entry.title}" />
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Error</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea class="form-control" th:classappend="${#fields.hasErrors('description')} ? is-invalid" th:field="${entry.description}"></textarea>
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Error</div>
+                    <small id="emailHelp" class="form-text text-muted">You can edit description later.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleFormControlFile1">File</label>
+                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                </div>
+
+
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+
+
+
+
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

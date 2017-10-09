@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head th:fragment="head">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta content="ie=edge" http-equiv="x-ua-compatible" />
+    <title th:text="${metaTitle} ? ${metaTitle} : 'KIR Competetion' "></title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" href="/css/frontend.css"/>
+</head>
+<body>
+
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-md-4 col-md-auto">
+            <div th:if="${param.error}" class="alert alert-danger">
+                Invalid username or password.
+            </div>
+
+            <div th:if="${param.logout}" class="alert alert-success">
+                You have been logged out.
+            </div>
+
+            <h3>Create new account</h3>
+
+            <form th:action="@{/register}" name="loginForm" th:object="${user}"  method="POST" id="needs-validation">
+
+                <div class="form-group">
+                    <label>Full name</label>
+                    <input type="text" class="form-control" th:classappend="${#fields.hasErrors('fullName')} ? is-invalid" th:field="${user.fullName}" />
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}">Error</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" class="form-control" th:classappend="${#fields.hasErrors('username')} ? is-invalid" th:field="${user.username}" />
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Error</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="text" class="form-control" th:classappend="${#fields.hasErrors('email')} ? is-invalid" th:field="${user.email}" />
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error</div>
+                </div>
+
+                <button type="submit" class="btn btn-success">Register</button>
+            </form>
+
+            <p><a href="login">Already have account?</a></p>
+
+
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

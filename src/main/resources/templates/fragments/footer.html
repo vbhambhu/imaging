@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Footer title</title>
+</head>
+<body>
+<div class="footer text-center" th:fragment="footer">
+    <p> <a href="#"> Terms of Use</a> | <a href="#">What's New</a> | <a href="#">Help</a> </p>
+    &copy; 2017 Gochyou 1.0.0
+
+    <!-- javascripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script th:each="js : ${jsFiles}" th:src="@{/js/} + ${js}" /></script>
+    <script type="text/javascript" src="/js/app.js"></script>
+</div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head th:fragment="head">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta content="ie=edge" http-equiv="x-ua-compatible" />
+    <title th:text="${metaTitle} ? ${metaTitle} : 'KIR Competetion' "></title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" href="/css/frontend.css"/>
+</head>
+<body>
+
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-md-4 col-md-auto">
+
+
+            <h3>Entry details</h3>
+
+            <form th:action="@{/entry/edit/details(id=${param.id})}" name="loginForm" th:object="${entry}"  method="POST" id="needs-validation">
+
+                <input type="hidden" th:field="${entry.type}" />
+                <input type="hidden" th:field="${entry.categoryId}" />
+                <input type="hidden" th:field="${entry.mediaPath}" />
+
+
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" class="form-control" th:classappend="${#fields.hasErrors('title')} ? is-invalid" th:field="${entry.title}" />
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Error</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea class="form-control" th:classappend="${#fields.hasErrors('description')} ? is-invalid" th:field="${entry.description}"></textarea>
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Error</div>
+                </div>
+
+                <button type="submit" class="btn btn-success" name="publish">Publish</button>
+                <button type="submit" class="btn btn-dark" name="draft">Save as draft</button>
+            </form>
+
+
+
+
+
+
+
+
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
