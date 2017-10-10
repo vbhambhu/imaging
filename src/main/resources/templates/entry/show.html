@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head th:fragment="head">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta content="ie=edge" http-equiv="x-ua-compatible" />
+    <title th:text="${metaTitle} ? ${metaTitle} : 'KIR Competetion' "></title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" href="/css/frontend.css"/>
+</head>
+<body>
+
+
+
+
+
+<div class="container">
+
+    <p>&nbsp;</p>
+    <a href="/">Go back to home</a>
+    <p>&nbsp;</p>
+
+    <div th:switch="${entry.type}">
+        <p th:case="'image'">
+            <img th:src="@{'media/' + ${entry.mediaPath}}" class="img-fluid"/>
+        </p>
+        <p th:case="video">
+
+            <video controls preload="auto" width="640" height="264"
+                   data-setup="{}">
+                <source th:src="@{'media/' + ${entry.mediaPath}}" type='video/mp4'>
+            </video>
+        </p>
+    </div>
+
+    <p>@author: <span th:text="${entry.username}"></span></p>
+
+    <h2 th:text="${entry.title}"></h2>
+    <p th:text="${entry.description}"></p>
+
+</div>
+
+</body>
+</html>

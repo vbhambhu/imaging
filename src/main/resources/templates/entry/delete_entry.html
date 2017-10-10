@@ -11,14 +11,31 @@
 <body>
 
 <div class="container">
+
+    <p>&nbsp;</p>
+
+    <div class="row">
+        <div class="col-md-9">
+            <a href="/dashboard" class="btn btn-link btn-lg">Home</a>
+        </div>
+        <div class="col-md-3">
+            <div class="float-right ">
+                <a href="/logout" class="btn btn-primary btn-lg ">Logout</a>
+            </div>
+        </div>
+    </div>
+    <hr>
     <div class="row justify-content-md-center">
         <div class="col-md-4 col-md-auto">
 
 
-            <h3>Are you sure you want to delete?</h3>
+            <h3>Are you sure you want to delete your entry?</h3>
+            <hr>
+            <p  class="text-danger">This action can not be undone.</p>
 
             <form th:action="@{/entry/delete(id=${param.id})}" method="POST">
-                <button type="submit" class="btn btn-success">Continue and delete</button>
+                <button type="submit" class="btn btn-success btn-lg">Continue and delete</button>
+                <a href="/dashboard" class="btn btn-lg btn-link">Cancel</a>
             </form>
 
 

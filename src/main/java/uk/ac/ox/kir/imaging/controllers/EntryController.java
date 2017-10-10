@@ -38,6 +38,18 @@ public class EntryController {
     private String uploadPath;
 
 
+
+
+    @RequestMapping(value = "/entry", method = RequestMethod.GET)
+    public String showEntry(@RequestParam(name = "id", required = true) int entryId, Model model) {
+
+        Entry entry = entryRepository.findOne(entryId);
+
+        model.addAttribute("entry", entry);
+        return "entry/show";
+    }
+
+
     @RequestMapping(value = "/add/entry", method = RequestMethod.GET)
     public String entryForm(Entry entry, Model model) {
 
@@ -69,7 +81,7 @@ public class EntryController {
         }
 
         List<String> contentTypes = Arrays.asList("image/png", "image/jpeg",
-                "image/gif", "video/mp4");
+                "image/gif", "video/mp4","video/quicktime");
 
 
         String filename = fileData.getOriginalFilename();
@@ -85,6 +97,8 @@ public class EntryController {
         String fileContentType = fileData.getContentType();
 
         System.out.println(fileData.getContentType());
+
+
 
         if(!contentTypes.contains(fileContentType)){
             model.addAttribute("errMsg", "File you are trying to upload is not allowed.");
@@ -182,7 +196,7 @@ public class EntryController {
         String filename = fileData.getOriginalFilename();
         String fileContentType = fileData.getContentType();
         List<String> contentTypes = Arrays.asList("image/png", "image/jpeg",
-                "image/gif", "video/mp4");
+                "image/gif", "video/mp4","video/quicktime");
 
         if(filename.isEmpty()){
             model.addAttribute("errMsg", "File field is required.");

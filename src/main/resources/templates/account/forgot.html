@@ -9,19 +9,14 @@
     <link rel="stylesheet" href="/css/frontend.css"/>
 </head>
 <body>
-
 <div class="container">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
     <div class="row justify-content-md-center">
         <div class="col-md-4 col-md-auto">
-            <div th:if="${param.error}" class="alert alert-danger">
-                Invalid username or password.
-            </div>
 
-            <div th:if="${param.logout}" class="alert alert-success">
-                You have been logged out.
-            </div>
-
-            <h3>Reset password</h3>
+            <h3>RESET PASSWORD</h3>
+            <hr>
 
             <div th:if="${errMsg}" class="alert alert-danger" th:text="${errMsg}"></div>
 
@@ -31,16 +26,11 @@
                     <input type="text" class="form-control" name="email" />
                 </div>
 
-                <button type="submit" class="btn btn-success">Send reset email</button>
+                <button type="submit" class="btn btn-success btn-lg">Send reset email</button>
+                <a href="/" class="btn btn-success btn-lg">Cancel</a>
             </form>
-
-            <p><a href="/">Cancel</a></p>
-
-
         </div>
-
     </div>
 </div>
-
 </body>
 </html>

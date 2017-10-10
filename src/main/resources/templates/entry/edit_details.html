@@ -11,11 +11,27 @@
 <body>
 
 <div class="container">
+
+    <p>&nbsp;</p>
+    <div class="row">
+        <div class="col-md-9">
+            <a href="/dashboard" class="btn btn-link btn-lg">Home</a>
+        </div>
+        <div class="col-md-3">
+            <div class="float-right ">
+                <a href="/logout" class="btn btn-primary btn-lg ">Logout</a>
+            </div>
+        </div>
+    </div>
+    <hr>
+
+
     <div class="row justify-content-md-center">
-        <div class="col-md-4 col-md-auto">
+        <div class="col-md-6 col-md-auto">
 
 
             <h3>Entry details</h3>
+            <hr>
 
             <form th:action="@{/entry/edit/details(id=${param.id})}" name="loginForm" th:object="${entry}"  method="POST" id="needs-validation">
 
@@ -26,25 +42,26 @@
 
                 <div class="form-group">
                     <label>Title</label>
-                    <input type="text" class="form-control" th:classappend="${#fields.hasErrors('title')} ? is-invalid" th:field="${entry.title}" />
+                    <input type="text" class="form-control form-control-lg" th:classappend="${#fields.hasErrors('title')} ? is-invalid" th:field="${entry.title}" />
                     <div class="invalid-feedback" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Error</div>
                 </div>
 
                 <div class="form-group">
                     <label>Description</label>
-                    <textarea class="form-control" th:classappend="${#fields.hasErrors('description')} ? is-invalid" th:field="${entry.description}"></textarea>
-                    <div class="invalid-feedback" th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Error</div>
+                    <textarea rows="8" class="form-control form-control-lg" th:classappend="${#fields.hasErrors('description')} ? is-invalid" th:field="${entry.description}"></textarea>
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('description')}" th:errors="*{description}" >Error</div>
                 </div>
 
                 <div class="form-group">
                     <label>Status</label>
-                    <select class="form-control" th:field="${entry.status}">
+                    <select class="form-control form-control-lg" th:field="${entry.status}">
                         <option value="0">Save a Draft</option>
                         <option value="1">Publish</option>
                     </select>
                 </div>
 
-                <button type="submit" class="btn btn-success">Save</button>
+                <button type="submit" class="btn btn-success btn-lg">Save</button>
+                <a href="/dashboard" class="btn btn-lg btn-link">Cancel</a>
             </form>
 
 

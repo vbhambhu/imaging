@@ -11,11 +11,29 @@
 <body>
 
 <div class="container">
+
+    <p>&nbsp;</p>
+    <div class="row">
+        <div class="col-md-9">
+            <a href="/dashboard" class="btn btn-link btn-lg">Home</a>
+        </div>
+        <div class="col-md-3">
+            <div class="float-right ">
+                <a href="/logout" class="btn btn-primary btn-lg ">Logout</a>
+            </div>
+        </div>
+    </div>
+    <hr>
+
+
     <div class="row justify-content-md-center">
         <div class="col-md-4 col-md-auto">
 
 
-            <h3>Add entry media</h3>
+
+
+            <h3>Add entry image or video</h3>
+            <hr>
 
             <div th:if="${errMsg}" class="alert alert-danger" th:text="${errMsg}"></div>
 
@@ -23,7 +41,7 @@
 
                 <div class="form-group">
                     <label>Category</label>
-                    <select class="form-control" name="category_id">
+                    <select class="form-control form-control-lg" name="category_id">
                         <option th:each="category : ${categories}" th:text="${category.name}"
                         th:value="${category.id}">1</option>
                     </select>
@@ -31,10 +49,10 @@
 
                 <div class="form-group">
                     <label>File</label>
-                    <input type="file" class="form-control-file" name="file">
+                    <input type="file" class="form-control-file form-control-lg" name="file">
                 </div>
 
-                <button type="submit" class="btn btn-success">Next</button>
+                <button type="submit" class="btn btn-success btn-lg">Next</button>
             </form>
 
 
